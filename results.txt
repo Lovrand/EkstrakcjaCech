@@ -1,0 +1,497 @@
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 400000 (Benign: 200000, Malicious: 200000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [21:13:20] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9991 | Classification time: 0.04165s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.9984 | Classification time: 0.00948s
+ -> Selected Features (4): ['id.orig_p', 'id.resp_p', 'proto', 'duration']
+
+[Method 2] Running SelectKBest (K=4)...
+ -> Ended. Accuracy: 0.9631 | Classification time: 0.01169s
+ -> Selected Features (4): ['id.orig_p', 'proto', 'conn_state', 'history']
+
+[Method 3] Running PCA (Components=4)...
+ -> Ended. Accuracy: 0.9975 | Classification time: 0.01079s
+ -> Used features: 4 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=4)...
+ -> Ended. Accuracy: 0.9966 | Classification time: 0.01233s
+ -> Used features: 4 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9991    0.9991 0.9991   0.9991   120000  0.04165    1.00x
+           RFECV           4   0.9984    0.9984 0.9984   0.9984   120000  0.00948    4.39x
+     SelectKBest           4   0.9631    0.9654 0.9631   0.9630   120000  0.01169    3.56x
+             PCA           4   0.9975    0.9975 0.9975   0.9975   120000  0.01079    3.86x
+Autoencoder (DL)           4   0.9966    0.9966 0.9966   0.9966   120000  0.01233    3.38x
+====================================================================================================
+
+Process finished with exit code 0
+
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 400000 (Benign: 200000, Malicious: 200000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [21:17:31] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9987 | Classification time: 0.03136s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.9912 | Classification time: 0.00953s
+ -> Selected Features (4): ['id.orig_p', 'id.resp_p', 'proto', 'service']
+
+[Method 2] Running SelectKBest (K=4)...
+ -> Ended. Accuracy: 0.9618 | Classification time: 0.01143s
+ -> Selected Features (4): ['id.orig_p', 'proto', 'conn_state', 'history']
+
+[Method 3] Running PCA (Components=4)...
+ -> Ended. Accuracy: 0.9970 | Classification time: 0.01092s
+ -> Used features: 4 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=4)...
+ -> Ended. Accuracy: 0.9959 | Classification time: 0.01431s
+ -> Used features: 4 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9987    0.9987 0.9987   0.9986   120000  0.03136    1.00x
+           RFECV           4   0.9912    0.9912 0.9912   0.9912   120000  0.00953    3.29x
+     SelectKBest           4   0.9618    0.9643 0.9618   0.9618   120000  0.01143    2.74x
+             PCA           4   0.9970    0.9970 0.9970   0.9970   120000  0.01092    2.87x
+Autoencoder (DL)           4   0.9959    0.9959 0.9959   0.9959   120000  0.01431    2.19x
+====================================================================================================
+
+Process finished with exit code 0
+
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 1000000 (Benign: 500000, Malicious: 500000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [21:22:35] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9984 | Classification time: 0.05037s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.9903 | Classification time: 0.01667s
+ -> Selected Features (3): ['id.orig_p', 'id.resp_p', 'proto']
+
+[Method 2] Running SelectKBest (K=3)...
+ -> Ended. Accuracy: 0.9620 | Classification time: 0.02151s
+ -> Selected Features (3): ['id.orig_p', 'proto', 'history']
+
+[Method 3] Running PCA (Components=3)...
+ -> Ended. Accuracy: 0.9952 | Classification time: 0.02066s
+ -> Used features: 3 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=3)...
+ -> Ended. Accuracy: 0.9957 | Classification time: 0.02095s
+ -> Used features: 3 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9984    0.9984 0.9984   0.9984   300000  0.05037    1.00x
+           RFECV           3   0.9903    0.9903 0.9903   0.9903   300000  0.01667    3.02x
+     SelectKBest           3   0.9620    0.9644 0.9620   0.9619   300000  0.02151    2.34x
+             PCA           3   0.9952    0.9952 0.9952   0.9952   300000  0.02066    2.44x
+Autoencoder (DL)           3   0.9957    0.9957 0.9957   0.9957   300000  0.02095    2.40x
+====================================================================================================
+
+Process finished with exit code 0
+
+0.005
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 1000000 (Benign: 500000, Malicious: 500000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [23:49:57] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9984 | Classification time: 0.11342s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.9903 | Classification time: 0.01667s
+ -> Selected Features (3): ['id.orig_p', 'id.resp_p', 'proto']
+
+[Method 2] Running SelectKBest (K=3)...
+ -> Ended. Accuracy: 0.9620 | Classification time: 0.02198s
+ -> Selected Features (3): ['id.orig_p', 'proto', 'history']
+
+[Method 3] Running PCA (Components=3)...
+ -> Ended. Accuracy: 0.9952 | Classification time: 0.02178s
+ -> Used features: 3 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=3)...
+ -> Ended. Accuracy: 0.9949 | Classification time: 0.02452s
+ -> Used features: 3 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9984    0.9984 0.9984   0.9984   300000  0.11342    1.00x
+           RFECV           3   0.9903    0.9903 0.9903   0.9903   300000  0.01667    6.80x
+     SelectKBest           3   0.9620    0.9644 0.9620   0.9619   300000  0.02198    5.16x
+             PCA           3   0.9952    0.9952 0.9952   0.9952   300000  0.02178    5.21x
+Autoencoder (DL)           3   0.9949    0.9949 0.9949   0.9949   300000  0.02452    4.63x
+====================================================================================================
+
+Process finished with exit code 0
+
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 1000000 (Benign: 500000, Malicious: 500000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [23:54:23] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9984 | Classification time: 0.04846s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.9903 | Classification time: 0.01801s
+ -> Selected Features (3): ['id.orig_p', 'id.resp_p', 'proto']
+
+[Method 2] Running SelectKBest (K=3)...
+ -> Ended. Accuracy: 0.9620 | Classification time: 0.01894s
+ -> Selected Features (3): ['id.orig_p', 'proto', 'history']
+
+[Method 3] Running PCA (Components=3)...
+ -> Ended. Accuracy: 0.9952 | Classification time: 0.02241s
+ -> Used features: 3 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=3)...
+ -> Ended. Accuracy: 0.9943 | Classification time: 0.02094s
+ -> Used features: 3 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9984    0.9984 0.9984   0.9984   300000  0.04846    1.00x
+           RFECV           3   0.9903    0.9903 0.9903   0.9903   300000  0.01801    2.69x
+     SelectKBest           3   0.9620    0.9644 0.9620   0.9619   300000  0.01894    2.56x
+             PCA           3   0.9952    0.9952 0.9952   0.9952   300000  0.02241    2.16x
+Autoencoder (DL)           3   0.9943    0.9943 0.9943   0.9943   300000  0.02094    2.31x
+====================================================================================================
+
+Process finished with exit code 0
+
+0.1
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 1000000 (Benign: 500000, Malicious: 500000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [00:03:09] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9990 | Classification time: 0.04993s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.8894 | Classification time: 0.01322s
+ -> Selected Features (1): ['id.orig_p']
+
+[Method 2] Running SelectKBest (K=1)...
+ -> Ended. Accuracy: 0.9510 | Classification time: 0.01371s
+ -> Selected Features (1): ['proto']
+
+[Method 3] Running PCA (Components=1)...
+ -> Ended. Accuracy: 0.9586 | Classification time: 0.01538s
+ -> Used features: 1 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=1)...
+ -> Ended. Accuracy: 0.9857 | Classification time: 0.01935s
+ -> Used features: 1 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9990    0.9990 0.9990   0.9990   300000  0.04993    1.00x
+           RFECV           1   0.8894    0.9049 0.8894   0.8883   300000  0.01322    3.78x
+     SelectKBest           1   0.9510    0.9552 0.9510   0.9509   300000  0.01371    3.64x
+             PCA           1   0.9586    0.9610 0.9586   0.9585   300000  0.01538    3.25x
+Autoencoder (DL)           1   0.9857    0.9858 0.9857   0.9857   300000  0.01935    2.58x
+====================================================================================================
+
+Process finished with exit code 0
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Scripts\python.exe C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\Cuda.py
+--- Step1: Loading and merging files ---
+ -> Loaded successfully iot23_csv\dataset1.csv
+ -> Loaded successfully iot23_csv\dataset10.csv
+ -> Loaded successfully iot23_csv\dataset11.csv
+ -> Loaded successfully iot23_csv\dataset13.csv
+ -> Loaded successfully iot23_csv\dataset17.csv
+ -> Loaded successfully iot23_csv\dataset19.csv
+ -> Loaded successfully iot23_csv\dataset2.csv
+ -> Loaded successfully iot23_csv\dataset20.csv
+ -> Loaded successfully iot23_csv\dataset21.csv
+ -> Loaded successfully iot23_csv\dataset23.csv
+ -> Loaded successfully iot23_csv\dataset3.csv
+ -> Loaded successfully iot23_csv\dataset4.csv
+ -> Loaded successfully iot23_csv\dataset5.csv
+ -> Loaded successfully iot23_csv\dataset6.csv
+ -> Loaded successfully iot23_csv\dataset7.csv
+ -> Loaded successfully iot23_csv\dataset9.csv
+
+--- Step2: Repairing the structure and splitting last column(in 3) ---
+
+--- Step3: Label classification and data set balancing ---
+Size of set: 1000000 (Benign: 500000, Malicious: 500000)
+
+--- Step4: Data cleaning ---
+
+================================================================================
+ COMPARISON OF FEATURE EXTRACTION AND SELECTION METHODS (XGBOOST)
+================================================================================
+
+[Method 0] Base classifier (All features)
+C:\Users\lovra\MainFolder\Programing\Python\Projects\EkstrakcjaCech\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [00:31:37] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-0015a694724fa8361-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+ -> Ended. Accuracy: 0.9985 | Classification time: 0.05599s
+ -> Used features: All 14 original features.
+
+[Method 1] Running RFECV...
+ -> Ended. Accuracy: 0.9900 | Classification time: 0.01732s
+ -> Selected Features (3): ['id.orig_p', 'id.resp_p', 'proto']
+
+[Method 2] Running SelectKBest (K=3)...
+ -> Ended. Accuracy: 0.9623 | Classification time: 0.02118s
+ -> Selected Features (3): ['id.orig_p', 'proto', 'history']
+
+[Method 3] Running PCA (Components=3)...
+ -> Ended. Accuracy: 0.9956 | Classification time: 0.01917s
+ -> Used features: 3 new Principal Components (mathematical combinations of all features).
+
+[Method 4] Running Autoencoder (Latent space=3)...
+ -> Ended. Accuracy: 0.9957 | Classification time: 0.02055s
+ -> Used features: 3 new Latent Features (compressed by neural network).
+
+====================================================================================================
+EXPERIMENT SUMMARY: METRICS AND PERFORMANCE
+====================================================================================================
+          Method  Dimensions Accuracy Precision Recall F1-Score  Support Time [s] Speed up
+  Base (XGBoost)          14   0.9985    0.9985 0.9985   0.9985   300000  0.05599    1.00x
+           RFECV           3   0.9900    0.9901 0.9900   0.9900   300000  0.01732    3.23x
+     SelectKBest           3   0.9623    0.9647 0.9623   0.9622   300000  0.02118    2.64x
+             PCA           3   0.9956    0.9956 0.9956   0.9956   300000  0.01917    2.92x
+Autoencoder (DL)           3   0.9957    0.9957 0.9957   0.9957   300000  0.02055    2.72x
+====================================================================================================
+
+Process finished with exit code 0
